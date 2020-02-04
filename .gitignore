@@ -1,3 +1,6 @@
 .DS_Store
 secrets.py
 __pycache__/
+*/__pycache__/
+assets/
+.vscode/
