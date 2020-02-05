@@ -2,7 +2,6 @@ import argparse
 import sys
 import secrets
 import tweepy
-from assets.tweets import tweets
 from models.Tweet import Tweet
 
 

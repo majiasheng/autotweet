@@ -1,7 +1,7 @@
-# what is this?
+# What is this?
 A tool to post tweets to twitter
 
-## how to set up?
+## How to set up?
 1. Go to your twitter account (or skip to 5 if you've already set up phone number)
 2. On the right of the home page, click on `more`
 3. Go to `Settings and privacy`
@@ -13,8 +13,8 @@ A tool to post tweets to twitter
 9. Copy `access token secret` to as `access_token_secret`, `API key` as `consumer_key`, `API secret key` as `consumer_secret`, and `Access token` as `access_token` to `__secrets.py` file
 10. Rename `__secrets.py` to `secrets.py`
 
-
-## how to run
+## How to run
 `python3 tweet.py` -s STATUS -m PATH_TO_MEDIA_FILE
 
- 
+## Better use case
+Create a separate directory to act as a queue for tweet deposits, and have a cron job to empty the queue (post to tweeter) periodically.
