@@ -17,4 +17,4 @@ A tool to post tweets to twitter
 `python3 tweet.py` -s STATUS -m PATH_TO_MEDIA_FILE
 
 ## Better use case
-Create a separate directory to act as a queue for tweet deposits, and have a cron job to empty the queue (post to tweeter) periodically.
+Create a separate directory to act as a queue for tweet deposits, and have a cron job to empty the queue (post to twitter) periodically.
