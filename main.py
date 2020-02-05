@@ -3,23 +3,8 @@ import sys
 import secrets
 import tweepy
 from assets.tweets import tweets
+from models.Tweet import Tweet
 
-
-parser = argparse.ArgumentParser(description='Posts tweets to tweeter')
-
-parser.add_argument(
-    '--status',
-    '-s',
-    dest='accumulate', 
-    action='store_const',
-    help='Text of tweet'
-)
-parser.add_argument(
-    '--media',
-    '-m',
-    action='store_const',
-    help='Path to media file'
-)
 
 def get_api(secrets: dict) -> tweepy.API:
     auth = tweepy.OAuthHandler(
@@ -36,20 +21,33 @@ def get_api(secrets: dict) -> tweepy.API:
 
 def send_tweet(api: tweepy.API, tweet: str, path_to_media: str = None) -> tweepy.Status:
     if tweet.media is None:
-        return api.update_status(status=tweet.text) 
-    return api.update_with_media(tweet.media, status=tweet.text)
+        return api.update_status(status=tweet.status) 
+    return api.update_with_media(tweet.media, status=tweet.status)
 
 
 def main():
-    # api = get_api(secrets)
-    
-    
-    # tweet = tweets[0]
-    for a in sys.argv:
-        print(a)
 
-    # status = send_tweet(api, tweet)
-    # print(status)
+    parser = argparse.ArgumentParser(description='Posts tweets to tweeter')
+    parser.add_argument(
+        '--status',
+        '-s',
+        help='Text of tweet',
+        required=True
+    )
+    parser.add_argument(
+        '--media',
+        '-m',
+        help='Path to media file'
+    )
+    args = parser.parse_args()
+    status = args.status
+    media = args.media
+
+    tweet = Tweet(status, media=media)
+    api = get_api(secrets)
+
+    res = send_tweet(api, tweet)
+    print(res)
 
 
 if __name__ == "__main__":

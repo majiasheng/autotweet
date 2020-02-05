@@ -1,7 +1,7 @@
 class Tweet():
 
-    def __init__(self, text: str, media: str = None):
-        self.text = text
+    def __init__(self, status: str, media: str = None):
+        self.status = status
         self.media = media
         self.posted = False
 
