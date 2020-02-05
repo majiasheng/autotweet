@@ -40,13 +40,14 @@ def main():
         help='Path to media file'
     )
     args = parser.parse_args()
+
     status = args.status
     media = args.media
-
     tweet = Tweet(status, media=media)
-    api = get_api(secrets)
 
+    api = get_api(secrets)
     res = send_tweet(api, tweet)
+
     print(res)
 
 
